@@ -13,7 +13,7 @@
                    placeholder="Nombre de la persona"
                    name="nombre"
                    required
-                   ngModel  
+                   [ngModel]="persona.nombre"  
                    >
             <span class="form-text- text-danger"
                   *ngIf="miFormulario.controls['nombre']?.invalid  &&
@@ -43,9 +43,10 @@
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label">Favoritos</label>
             <div class="col-sm-9">
-                    <input class="form-control"
-                           placeholder="Agregar favorito"
-                           >       
+                    <input  *ngFor="let juego of persona.favoritos; let i = index"
+                            [(ngModel)]="juego.nombre"
+                            name="favorito_{{ i }}"
+                            class="form-control mb-1">       
             </div>
         </div>
     
@@ -65,19 +66,5 @@
 </form>
 
 
-<div class="row">
-    <div class="col">
-
-        <span>Valid</span>
-        <pre>{{ miFormulario.valid }}</pre>
-
-        <span>Valor</span>
-        <pre>{{ miFormulario.value | json}}</pre>
-
-        <span>Tocado</span>
-        <pre>{{ miFormulario.controls['nombre']?.touched}}</pre>        
-
-
-
-    </div>
-</div>
+<span>Persona</span>
+<pre>{{ persona | json }}</pre>
