@@ -41,6 +41,12 @@ export class DinamicosComponent  {
     this.nuevoFavorito.reset();
   }
 
+  borrar( i:number ){
+  //  this.favoritosArr.removeAt(this.favoritosArr.length-1);
+    this.favoritosArr.removeAt(i);
+
+  }
+
   guardar(){
 
     if( this.miFormulario.invalid ){
